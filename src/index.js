@@ -4,6 +4,7 @@ const port=3000;
 const app = express();
 const fs=require('fs');
 const cors=require('cors');
+const serverless=require('serverless-http')
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -108,3 +109,5 @@ app.delete('/todos/:id',del)
 app.listen(port,()=>{
   console.log('Listening on '+port);
 })
+
+module.exports.handler=serverless(app);
