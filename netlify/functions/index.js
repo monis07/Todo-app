@@ -5,8 +5,10 @@ const app = express();
 const fs=require('fs');
 const cors=require('cors');
 const serverless=require('serverless-http')
+
 app.use(cors());
 app.use(bodyParser.json());
+
 
 function getAll(req,res){
   fs.readFile('todo.json','utf-8',(err,data)=>{
