@@ -2,7 +2,7 @@
   "name": "my-to-do-project",
   "version": "1.0.0",
   "description": "",
-  "main": "netlify/functions/index.js",
+  "main": "functions/index.js",
   "scripts": {
     "build": "netlify deploy --prod"
   },

@@ -5,7 +5,7 @@ const app = express();
 const fs=require('fs');
 const cors=require('cors');
 const serverless=require('serverless-http')
-
+const router = express.Router();
 app.use(cors());
 app.use(bodyParser.json());
 
@@ -100,13 +100,14 @@ fs.readFile('todo.json','utf-8',(err,data)=>{
       })
 }
 
-app.get('/',(req,res)=>{
+router.get('/',(req,res)=>{
   res.sendFile(__dirname+'/index.html');
 })
-app.get('/todos',getAll)
-app.post('/todos',addnew)
-app.put('/todos/:id',update)
-app.delete('/todos/:id',del)
+router.get('/todos',getAll)
+router.post('/todos',addnew)
+router.put('/todos/:id',update)
+router.delete('/todos/:id',del)
+app.use("/",router);
 
 app.listen(port,()=>{
   console.log('Listening on '+port);
